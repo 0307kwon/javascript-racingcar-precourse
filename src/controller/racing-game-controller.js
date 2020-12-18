@@ -4,8 +4,14 @@ import Controller from "./controller.js";
 export default class RacingGameController extends Controller {
   constructor(view, model) {
     super(view, model);
-    this._view.setInitialView();
+    this.updateInitialView();
+  }
+  updateInitialView() {
+    this._view.setNameInputContainer();
     this._addEventToNameInputButton();
+  }
+  updateCountInputContainer() {
+    this._view.setCountInputContainer();
   }
 
   _addEventToNameInputButton() {
@@ -22,6 +28,7 @@ export default class RacingGameController extends Controller {
     } catch (error) {
       alert(error);
     }
+    this.updateCountInputContainer();
   }
   _trimComma(inputValue) {
     let inputs = inputValue.split(",");
@@ -31,4 +38,6 @@ export default class RacingGameController extends Controller {
     console.log(inputs);
     return inputs;
   }
+
+
 }
