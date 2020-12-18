@@ -6,6 +6,8 @@ export const CAR_GAME = {
   COUNT_INPUT_CONTAINER_ID: "try-number-input-container",
   COUNT_INPUT_ID: "racing-count-input",
   COUNT_SUBMIT_ID: "racing-count-submit",
+
+  RESULT_CONTAINER: "result-container",
 };
 
 export const INPUT_LIMIT = {

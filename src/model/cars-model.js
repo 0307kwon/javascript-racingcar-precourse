@@ -48,7 +48,10 @@ export default class CarsModel {
   _registerCurrentRecords() {
     const currentRecords = [];
     this._cars.forEach((car) => {
-      const record = [car.name, car.currentPosition];
+      const record = {
+        name: car.name,
+        currentPosition: car.currentPosition,
+      };
       currentRecords.push(record);
     });
     this._gameRecords.push(currentRecords);

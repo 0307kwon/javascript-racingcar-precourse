@@ -14,6 +14,11 @@ export default class RacingGameController extends Controller {
     this._view.setCountInputContainer();
     this._addEventToCountInputButton();
   }
+  updateResultContainer() {
+    const gameRecords = this._model.getGameRecords();
+    const winners = this._model.getWinners();
+    this._view.setResultContainer(gameRecords, winners);
+  }
 
   _addEventToNameInputButton() {
     this.addClickEventByID(
@@ -48,7 +53,7 @@ export default class RacingGameController extends Controller {
       return;
     }
     console.log(this._model.getGameRecords());
-    //this.updateCountInputContainer();
+    this.updateResultContainer();
   }
 
   _trimComma(inputValue) {
