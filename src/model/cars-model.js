@@ -3,7 +3,8 @@ import Car from "./object/car.js";
 
 export default class CarsModel {
   constructor() {
-    this.cars = [];
+    this._cars = [];
+    this._gameRecords = [];
   }
   addCars([...carNames]) {
     this._verifyOverlapName(carNames);
@@ -12,19 +13,31 @@ export default class CarsModel {
     });
     carNames.forEach((carName) => {
       const car = new Car(carName);
-      this.cars.push(car);
-      console.log(this.cars);
+      this._cars.push(car);
+      console.log(this._cars);
     });
+  }
+  getGameRecords() {
+    return this._gameRecords;
   }
   processGameByCount(gameCount) {
     this._verifyGameCount(gameCount);
     for (let i = 0; i < gameCount; i++) {
       this._raceCars();
+      this._registerCurrentRecords();
     }
   }
 
+  _registerCurrentRecords() {
+    const currentRecords = [];
+    this._cars.forEach((car) => {
+      const record = [car.name, car.currentPosition];
+      currentRecords.push(record);
+    });
+    this._gameRecords.push(currentRecords);
+  }
   _raceCars() {
-    this.cars.forEach((car) => {
+    this._cars.forEach((car) => {
       car.race();
     });
   }

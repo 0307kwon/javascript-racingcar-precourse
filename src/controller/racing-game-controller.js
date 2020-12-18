@@ -45,7 +45,9 @@ export default class RacingGameController extends Controller {
       this._model.processGameByCount(gameCount);
     } catch (error) {
       alert(error);
+      return;
     }
+    console.log(this._model.getGameRecords());
     //this.updateCountInputContainer();
   }
 
