@@ -7,6 +7,9 @@ export default class CarsModel {
   }
   addCars([...carNames]) {
     carNames.forEach((carName) => {
+      this._verifyValidCarName(carName);
+    });
+    carNames.forEach((carName) => {
       const car = new Car(carName);
       this.cars.push(car);
       console.log(this.cars);
