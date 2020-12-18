@@ -16,7 +16,17 @@ export default class CarsModel {
       console.log(this.cars);
     });
   }
+  processGameByCount(gameCount) {
+    for (let i = 0; i < gameCount; i++) {
+      this._raceCars();
+    }
+  }
 
+  _raceCars() {
+    this.cars.forEach((car) => {
+      car.race();
+    });
+  }
   _verifyOverlapName([...carNames]) {
     const setToVerify = new Set(carNames);
     if (setToVerify.size < carNames.length) {

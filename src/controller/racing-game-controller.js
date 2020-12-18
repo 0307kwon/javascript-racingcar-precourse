@@ -40,11 +40,9 @@ export default class RacingGameController extends Controller {
     );
   }
   _callbackOfCountInputButton() {
-    const inputValue = this.getInputByID(CAR_GAME.COUNT_INPUT_ID);
-    console.log(inputValue);
-    try {
-    } catch (error) {
-    }
+    const gameCount = this.getInputByID(CAR_GAME.COUNT_INPUT_ID);
+    console.log("츄라이");
+    this._model.processGameByCount(gameCount);
     //this.updateCountInputContainer();
   }
 

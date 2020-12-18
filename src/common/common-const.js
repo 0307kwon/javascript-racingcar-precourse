@@ -13,6 +13,10 @@ export const INPUT_LIMIT = {
   MIN_NAME_LENGTH: 1,
 };
 
+export const GAME_LIMIT = {
+  MIN_NUMBER_TO_GO_FORWARD: 4,
+};
+
 export const ERROR_MESSAGE = {
   EXCEED_MAX_NAME_LENGTH: `자동차의 이름은 최대 ${INPUT_LIMIT.MAX_NAME_LENGTH}자여야 합니다.`,
   UNDER_MIN_NAME_LENGTH: `자동차의 이름은 최소 ${INPUT_LIMIT.MIN_NAME_LENGTH}자여야 합니다.`,
