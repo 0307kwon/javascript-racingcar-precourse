@@ -20,6 +20,16 @@ export default class CarsModel {
   getGameRecords() {
     return this._gameRecords;
   }
+  getWinners() {
+    const maxPosition = this._getMaxPosition();
+    const winners = [];
+    for (let car of this._cars) {
+      if (car.currentPosition === maxPosition) {
+        winners.push(car.name);
+      }
+    }
+    return winners;
+  }
   processGameByCount(gameCount) {
     this._verifyGameCount(gameCount);
     for (let i = 0; i < gameCount; i++) {
@@ -28,6 +38,13 @@ export default class CarsModel {
     }
   }
 
+  _getMaxPosition() {
+    let maxPosition = 0;
+    for (let car of this._cars) {
+      maxPosition = Math.max(maxPosition, car.currentPosition);
+    }
+    return maxPosition;
+  }
   _registerCurrentRecords() {
     const currentRecords = [];
     this._cars.forEach((car) => {
