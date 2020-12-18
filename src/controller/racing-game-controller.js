@@ -16,6 +16,8 @@ export default class RacingGameController extends Controller {
   }
   _callbackOfNameInputButton() {
     const inputValue = this.getInputByID(CAR_GAME.NAME_INPUT_ID);
+    const carNames = inputValue.split(",");
+    console.log(carNames);
     this._model.addCar(inputValue);
   }
 }
