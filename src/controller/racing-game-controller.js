@@ -12,6 +12,7 @@ export default class RacingGameController extends Controller {
   }
   updateCountInputContainer() {
     this._view.setCountInputContainer();
+    this._addEventToCountInputButton();
   }
 
   _addEventToNameInputButton() {
@@ -27,9 +28,26 @@ export default class RacingGameController extends Controller {
       this._model.addCars(carNames);
     } catch (error) {
       alert(error);
+      return;
     }
     this.updateCountInputContainer();
   }
+
+  _addEventToCountInputButton() {
+    this.addClickEventByID(
+      CAR_GAME.COUNT_SUBMIT_ID,
+      this._callbackOfCountInputButton
+    );
+  }
+  _callbackOfCountInputButton() {
+    const inputValue = this.getInputByID(CAR_GAME.COUNT_INPUT_ID);
+    console.log(inputValue);
+    try {
+    } catch (error) {
+    }
+    //this.updateCountInputContainer();
+  }
+
   _trimComma(inputValue) {
     let inputs = inputValue.split(",");
     inputs = inputs.map((input) => {
