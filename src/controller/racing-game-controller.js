@@ -16,8 +16,19 @@ export default class RacingGameController extends Controller {
   }
   _callbackOfNameInputButton() {
     const inputValue = this.getInputByID(CAR_GAME.NAME_INPUT_ID);
-    const carNames = inputValue.split(",");
-    console.log(carNames);
-    this._model.addCar(inputValue);
+    const carNames = this._trimComma(inputValue);
+    try {
+      this._model.addCars(carNames);
+    } catch (error) {
+      alert(error);
+    }
+  }
+  _trimComma(inputValue) {
+    let inputs = inputValue.split(",");
+    inputs = inputs.map((input) => {
+      return input.trim();
+    });
+    console.log(inputs);
+    return inputs;
   }
 }
