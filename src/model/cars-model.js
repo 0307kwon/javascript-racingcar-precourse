@@ -6,6 +6,7 @@ export default class CarsModel {
     this.cars = [];
   }
   addCars([...carNames]) {
+    this._verifyOverlapName(carNames);
     carNames.forEach((carName) => {
       this._verifyValidCarName(carName);
     });
@@ -16,6 +17,12 @@ export default class CarsModel {
     });
   }
 
+  _verifyOverlapName([...carNames]) {
+    const setToVerify = new Set(carNames);
+    if (setToVerify.size < carNames.length) {
+      throw ERROR_MESSAGE.OVERLAP_NAME_EXIST;
+    }
+  }
   _verifyValidCarName(carName) {
     if (carName.length > INPUT_LIMIT.MAX_NAME_LENGTH) {
       throw ERROR_MESSAGE.EXCEED_MAX_NAME_LENGTH;
