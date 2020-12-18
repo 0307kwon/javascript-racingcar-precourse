@@ -26,7 +26,13 @@ export default class RacingGameController extends Controller {
       this._callbackOfNameInputButton
     );
   }
-  _callbackOfNameInputButton() {
+  _addEventToCountInputButton() {
+    this.addClickEventByID(
+      CAR_GAME.COUNT_SUBMIT_ID,
+      this._callbackOfCountInputButton
+    );
+  }
+  _callbackOfNameInputButton(event) {
     const inputValue = this.getInputByID(CAR_GAME.NAME_INPUT_ID);
     const carNames = this._trimComma(inputValue);
     try {
@@ -35,16 +41,10 @@ export default class RacingGameController extends Controller {
       alert(error);
       return;
     }
+    this.disableButtonByID(event.target.id);
     this.updateCountInputContainer();
   }
-
-  _addEventToCountInputButton() {
-    this.addClickEventByID(
-      CAR_GAME.COUNT_SUBMIT_ID,
-      this._callbackOfCountInputButton
-    );
-  }
-  _callbackOfCountInputButton() {
+  _callbackOfCountInputButton(event) {
     const gameCount = this.getInputByID(CAR_GAME.COUNT_INPUT_ID);
     try {
       this._model.processGameByCount(gameCount);
@@ -52,7 +52,7 @@ export default class RacingGameController extends Controller {
       alert(error);
       return;
     }
-    console.log(this._model.getGameRecords());
+    this.disableButtonByID(event.target.id);
     this.updateResultContainer();
   }
 

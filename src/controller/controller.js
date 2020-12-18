@@ -11,4 +11,8 @@ export default class Controller {
     const button = document.getElementById(id);
     button.addEventListener("click", callback.bind(this));
   }
+  disableButtonByID(id) {
+    const button = document.getElementById(id);
+    button.disabled = true;
+  }
 }
