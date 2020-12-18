@@ -17,6 +17,7 @@ export default class CarsModel {
     });
   }
   processGameByCount(gameCount) {
+    this._verifyGameCount(gameCount);
     for (let i = 0; i < gameCount; i++) {
       this._raceCars();
     }
@@ -40,6 +41,13 @@ export default class CarsModel {
     if (carName.length < INPUT_LIMIT.MIN_NAME_LENGTH) {
       throw ERROR_MESSAGE.UNDER_MIN_NAME_LENGTH;
     }
-    return;
+  }
+  _verifyGameCount(gameCount) {
+    if (String(gameCount) === "") {
+      throw ERROR_MESSAGE.NOT_TYPE_OF_NUMBER;
+    }
+    if (gameCount < INPUT_LIMIT.MIN_GAME_COUNT) {
+      throw ERROR_MESSAGE.UNDER_MIN_GAME_COUNT;
+    }
   }
 }
